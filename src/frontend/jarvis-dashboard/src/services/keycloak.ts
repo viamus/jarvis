@@ -2,9 +2,9 @@ import Keycloak from 'keycloak-js';
 
 // Keycloak configuration
 const keycloakConfig = {
-  url: import.meta.env.REACT_APP_KEYCLOAK_URL || import.meta.env.VITE_KEYCLOAK_URL || 'http://localhost:8080',
-  realm: import.meta.env.REACT_APP_KEYCLOAK_REALM || import.meta.env.VITE_KEYCLOAK_REALM || 'jarvis',
-  clientId: import.meta.env.REACT_APP_KEYCLOAK_CLIENT_ID || import.meta.env.VITE_KEYCLOAK_CLIENT_ID || 'jarvis-dashboard',
+  url: import.meta.env.VITE_KEYCLOAK_URL || 'http://localhost:8080',
+  realm:  import.meta.env.VITE_KEYCLOAK_REALM || 'jarvis',
+  clientId: import.meta.env.VITE_KEYCLOAK_CLIENT_ID || 'jarvis-dashboard',
 };
 
 // Initialize Keycloak instance
