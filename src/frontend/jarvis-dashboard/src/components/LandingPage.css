@@ -308,7 +308,13 @@
 }
 
 .login-icon {
-  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-icon svg {
+  filter: drop-shadow(0 0 5px #00f5ff);
 }
 
 .button-glow {
@@ -367,9 +373,20 @@
 }
 
 .feature-icon {
-  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 1rem;
+}
+
+.feature-icon svg {
   filter: drop-shadow(0 0 10px #00f5ff);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon svg {
+  filter: drop-shadow(0 0 15px #00f5ff) drop-shadow(0 0 25px #00f5ff);
+  transform: scale(1.1);
 }
 
 .feature-card h3 {

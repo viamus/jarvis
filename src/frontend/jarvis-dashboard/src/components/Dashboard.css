@@ -107,7 +107,14 @@
 }
 
 .logout-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transform: rotate(180deg);
+}
+
+.logout-icon svg {
+  filter: drop-shadow(0 0 3px currentColor);
 }
 
 /* Main Content */
@@ -227,8 +234,7 @@
 }
 
 .activity-icon {
-  font-size: 1.5rem;
-  width: 40px;
+  min-width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
@@ -236,6 +242,22 @@
   background: rgba(0, 245, 255, 0.1);
   border-radius: 10px;
   border: 1px solid rgba(0, 245, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.activity-icon svg {
+  filter: drop-shadow(0 0 5px #00f5ff);
+  transition: all 0.3s ease;
+}
+
+.activity-item:hover .activity-icon {
+  background: rgba(0, 245, 255, 0.2);
+  border-color: #00f5ff;
+  transform: scale(1.05);
+}
+
+.activity-item:hover .activity-icon svg {
+  filter: drop-shadow(0 0 8px #00f5ff) drop-shadow(0 0 15px #00f5ff);
 }
 
 .activity-details {
@@ -287,8 +309,20 @@
 }
 
 .control-icon {
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.control-icon svg {
   filter: drop-shadow(0 0 5px #00f5ff);
+  transition: all 0.3s ease;
+}
+
+.control-button:hover .control-icon svg {
+  filter: drop-shadow(0 0 10px #00f5ff) drop-shadow(0 0 20px #00f5ff);
+  transform: scale(1.1);
 }
 
 /* Background Animation */

@@ -1,5 +1,15 @@
 import React from 'react';
 import { logout, getUserProfile } from '../services/keycloak';
+import { 
+  NeuralIcon, 
+  AnalysisIcon, 
+  SecurityIcon, 
+  LightningIcon, 
+  ChartIcon, 
+  ConfigIcon, 
+  PerformanceIcon, 
+  ActivityBrainIcon 
+} from './Icons';
 import './Dashboard.css';
 
 const Dashboard: React.FC = () => {
@@ -26,7 +36,9 @@ const Dashboard: React.FC = () => {
             </div>
             <button className="logout-button" onClick={handleLogout}>
               <span>Disconnect</span>
-              <span className="logout-icon">?</span>
+              <span className="logout-icon">
+                <LightningIcon size={16} />
+              </span>
             </button>
           </div>
         </div>
@@ -61,21 +73,27 @@ const Dashboard: React.FC = () => {
             </div>
             <div className="card-content">
               <div className="activity-item">
-                <div className="activity-icon">??</div>
+                <div className="activity-icon">
+                  <ActivityBrainIcon size={24} />
+                </div>
                 <div className="activity-details">
                   <span className="activity-title">Neural Analysis Complete</span>
                   <span className="activity-time">2 minutes ago</span>
                 </div>
               </div>
               <div className="activity-item">
-                <div className="activity-icon">?</div>
+                <div className="activity-icon">
+                  <LightningIcon size={24} />
+                </div>
                 <div className="activity-details">
                   <span className="activity-title">Real-time Processing Started</span>
                   <span className="activity-time">5 minutes ago</span>
                 </div>
               </div>
               <div className="activity-item">
-                <div className="activity-icon">??</div>
+                <div className="activity-icon">
+                  <SecurityIcon size={24} />
+                </div>
                 <div className="activity-details">
                   <span className="activity-title">Security Scan Completed</span>
                   <span className="activity-time">10 minutes ago</span>
@@ -91,19 +109,27 @@ const Dashboard: React.FC = () => {
             <div className="card-content">
               <div className="control-grid">
                 <button className="control-button">
-                  <div className="control-icon">??</div>
+                  <div className="control-icon">
+                    <NeuralIcon size={32} />
+                  </div>
                   <span>Neural Networks</span>
                 </button>
                 <button className="control-button">
-                  <div className="control-icon">??</div>
+                  <div className="control-icon">
+                    <ChartIcon size={32} />
+                  </div>
                   <span>Analytics</span>
                 </button>
                 <button className="control-button">
-                  <div className="control-icon">??</div>
+                  <div className="control-icon">
+                    <ConfigIcon size={32} />
+                  </div>
                   <span>Configuration</span>
                 </button>
                 <button className="control-button">
-                  <div className="control-icon">??</div>
+                  <div className="control-icon">
+                    <PerformanceIcon size={32} />
+                  </div>
                   <span>Performance</span>
                 </button>
               </div>
