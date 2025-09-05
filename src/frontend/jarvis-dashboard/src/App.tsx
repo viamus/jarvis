@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import { initKeycloak, isAuthenticated } from './services/keycloak';
+import LandingPage from './components/LandingPage';
+import Dashboard from './components/Dashboard';
+import Loading from './components/Loading';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [keycloakInitialized, setKeycloakInitialized] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const initializeKeycloak = async () => {
+      try {
+        await initKeycloak();
+        setAuthenticated(isAuthenticated() || false);
+        setKeycloakInitialized(true);
+      } catch (error) {
+        console.error('Failed to initialize Keycloak:', error);
+        setKeycloakInitialized(true); // Still allow app to load
+      } finally {
+        // Add a small delay for better UX
+        setTimeout(() => {
+          setLoading(false);
+        }, 1500);
+      }
+    };
+
+    initializeKeycloak();
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (!keycloakInitialized) {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        background: 'linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%)',
+        color: '#ffffff',
+        fontFamily: 'Rajdhani, sans-serif'
+      }}>
+        <h2>Failed to initialize authentication service</h2>
+      </div>
+    );
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      {authenticated ? <Dashboard /> : <LandingPage />}
+    </div>
+  );
 }
 
-export default App
+export default App;
